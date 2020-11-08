@@ -54,5 +54,17 @@ function ranking() { // ランキング表作成
     if( a.sum < b.sum ) return 1;
     return 0;
   });
-  rankSheet.getRange(1, 1, outputData.length, 7 ).setValues(outputData);
+  rankSheet.getRange(2, 1, outputData.length, 7 ).setValues(outputData);
 }
+
+function setTime(){ // 現在の時間を出力
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('ranking');
+  const date = new Date();
+  const time  = (date.getMonth() + 1)  + "月" + 
+				date.getDate() + "日" + 
+				date.getHours() + "時" + 
+				date.getMinutes() + "分" + 
+				date.getSeconds() + "秒";
+  sheet.getRange("I2").setValue(time);
+}
+  
